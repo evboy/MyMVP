@@ -65,4 +65,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
         //登录成功，跳转到主页面
     }
+
+    @Override
+    public void loginFail() {
+        Toast.makeText(this, "登录失败", Toast.LENGTH_SHORT).show();
+        //登录失败，停留在登录页面
+    }
 }

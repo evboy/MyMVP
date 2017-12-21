@@ -27,5 +27,6 @@ public class LoginPresentImpl implements LoginPresent,LoginModel.OnLoginListener
     @Override
     public void onLoginFail() {
         mView.hideProgress();
+        mView.loginFail();
     }
 }
