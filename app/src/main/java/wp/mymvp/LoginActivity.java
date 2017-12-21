@@ -14,12 +14,16 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private Button mLogin;
     private ProgressBar mWaitLogin;
 
+    private LoginPresent mPresent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         initView();
+
+        mPresent = new LoginPresentImpl(this, new LoginModelImpl());
 
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,13 +33,14 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 //简单进行非空验证
                 if (username != null && !username.equals("") && password != null && !password.equals("")) {
                     //这里想要执行登录操作，需要通过Present控制Model请求
-
+                    mPresent.doLogin(username, password);
                 } else {
                     Toast.makeText(LoginActivity.this, "用户名或密码不能为空", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
+
     }
 
     private void initView() {
